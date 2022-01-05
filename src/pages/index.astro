@@ -1,0 +1,37 @@
+---
+// collection
+// Component Imports
+import BaseLayout from '../layouts/BaseLayout.astro'
+import ShowsList from '../components/ShowsList.astro'
+// Component Script:
+// You can write any JavaScript/TypeScript that you'd like here.
+// It will run during the build, but never in the browser.
+// All variables are available to use in the HTML template below.
+let title = 'example.fm';
+let description = 'This is a starter repo for an blog built with Astro including open graph tags, canonical urls, RSS, sitemap support.';
+let permalink = 'https://example.fm/';
+---
+
+<BaseLayout title={title} description={description} permalink={permalink} canonicalURL={Astro.request.canonicalURL.href}>
+  <ShowsList />
+</BaseLayout>
+
+<style>
+.showlist {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+}
+
+@media screen and (max-width: 769px) {
+  .blog-show-content__article {
+    padding: 1rem;
+  }
+  .showlist {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

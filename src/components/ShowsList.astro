@@ -1,0 +1,22 @@
+---
+// console.log('1')
+const allShows = Astro.fetchContent('../pages/show/**/*.md');
+console.log("🚀 ~ file: ShowsList.astro ~ line 4 ~ allShows", allShows)
+// console.log('2')
+const sortedShows = allShows.sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
+// console.log('3')
+const showListClass = (show) => show.url === Astro.request.url.pathname ? 'showlist__entry--active' : 'showlist__entry'
+---
+
+<section class="showlist">
+  { sortedShows.map(show => <div class={showListClass(show)}><a href={show.url}>{show.title}</a></div>) }
+</section>
+
+<style>
+.showlist__entry a {
+  color: red;
+}
+.showlist__entry--active a {
+  color: blue;
+}
+</style>

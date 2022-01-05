@@ -1,0 +1,28 @@
+---
+// import { Markdown } from 'astro/components';
+import BaseHead from '../components/BaseHead.astro';
+import ShowsList from '../components/ShowsList.astro';
+// import Header from '../components/astro/Header.astro';
+// import Footer from '../components/astro/Footer.astro';
+import Show from '../components/Show.astro';
+
+const {content} = Astro.props;
+const {title, description, publishDate, author, heroImage, permalink, alt} = content;
+---
+<!DOCTYPE html>
+<html lang={ content.lang || 'en' }>
+  <head>
+    <BaseHead title={title} description={description} permalink={permalink} ogImageUrl={heroImage} publishDate={publishDate} canonicalURL={Astro.request.canonicalURL} articleSchema />
+  </head>
+
+  <body>
+    <!-- <Header /> -->
+    <main>
+      <ShowsList />
+      <Show title={title} author={author} heroImage={heroImage} publishDate={publishDate} alt={alt}>
+        <slot />
+      </Show>
+    </main>
+    <!-- <Footer/> -->
+  </body>
+</html>

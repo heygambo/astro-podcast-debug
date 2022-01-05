@@ -1,0 +1,13 @@
+{
+  "name": "example.fm-website",
+  "version": "v1.1.0",
+  "private": false,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.0.1",
+    "astro": "^0.22.1"
+  }
+}
